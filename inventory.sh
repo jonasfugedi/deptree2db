@@ -15,8 +15,8 @@ ENTRY_ID=$(sqlite3 $DB_PATH "INSERT INTO inventory (timestamp, repo, url, branch
 
 echo "Inventory entry=$ENTRY_ID"
 
-# -Dincludes=com.tajjm.* -DappendOutput=true
-mvn dependency:tree -DoutputType=dot -DoutputFile=$PWD/dep_graph.dot
+# -Dincludes=com.tajjm.*
+mvn dependency:tree -DoutputType=dot -DoutputFile=$PWD/dep_graph.dot -DappendOutput=true
 
 java -jar /Users/jonas/projects/deptree2db/target/deptree2db-1.0-SNAPSHOT-jar-with-dependencies.jar $ENTRY_ID $PWD/dep_graph.dot > deps.csv
 

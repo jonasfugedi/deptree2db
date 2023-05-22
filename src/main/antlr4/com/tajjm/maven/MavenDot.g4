@@ -31,7 +31,7 @@ Sourced from https://github.com/antlr/grammars-v4/blob/master/dot/DOT.g4 and mod
 grammar MavenDot;
 
 graph
-   : DIGRAPH id_? '{' stmt_list '}' EOF
+   : ( DIGRAPH id_? '{' stmt_list '}' )* EOF
    ;
 
 stmt_list

@@ -1,6 +1,5 @@
 package com.tajjm.maven.deptree2db;
 
-import com.tajjm.maven.deptree2db.App;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -18,5 +17,14 @@ class AppTest {
         File file = Paths.get(res.toURI()).toFile();
         String absolutePath = file.getAbsolutePath();
         app.main(new String[] { "234", absolutePath });
+    }
+
+    @Test
+    void multi_dep() throws IOException, URISyntaxException {
+        var app = new App();
+        URL res = getClass().getClassLoader().getResource("multi_dep_graph.dot");
+        File file = Paths.get(res.toURI()).toFile();
+        String absolutePath = file.getAbsolutePath();
+        app.main(new String[] { "567", absolutePath });
     }
 }
