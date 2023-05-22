@@ -1,4 +1,4 @@
-# Dependency Tree To Database
+# Maven Dependency Tree To Database
 
 Code to parse a maven dependency tree into CSV. 
 
