@@ -6,15 +6,31 @@ public class Dependency {
     private final String version;
     private final String type;
     private final String scope;
+    private final String classifier;
 
     public Dependency(String text) {
         var parts = text.replaceAll("\"", "").split(":");
-        if (parts.length == 4 || parts.length == 5) {
+        if (parts.length == 4) {
             group = parts[0];
             artefact = parts[1];
             type = parts[2];
+            classifier = null;
             version = parts[3];
-            scope = parts.length == 5 ? parts[4] : null;
+            scope = null;
+        } else if (parts.length == 5) {
+            group = parts[0];
+            artefact = parts[1];
+            type = parts[2];
+            classifier = null;
+            version = parts[3];
+            scope =  parts[4];
+        } else if (parts.length == 6) {
+            group = parts[0];
+            artefact = parts[1];
+            type = parts[2];
+            classifier = parts[3];
+            version = parts[4];
+            scope =  parts[5];
         } else {
             throw new RuntimeException("Bad dependency format: " + text);
         }
@@ -52,6 +68,7 @@ public class Dependency {
                 ", version='" + version + '\'' +
                 ", type='" + type + '\'' +
                 ", scope='" + scope + '\'' +
+                ", classifier='" + classifier + '\'' +
                 '}';
     }
 }
