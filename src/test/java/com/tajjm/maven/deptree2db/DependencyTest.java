@@ -17,5 +17,7 @@ class DependencyTest {
         assertEquals("com.tajjm.demo.tracing:proto:1.0-SNAPSHOT", new Dependency(depText).toGAV());
         depText = "io.netty:netty-resolver-dns-native-macos:jar:osx-x86_64:4.1.84.Final:compile";
         assertEquals("io.netty:netty-resolver-dns-native-macos:4.1.84.Final", new Dependency(depText).toGAV());
+        depText = "org.camunda.feel:feel-engine:jar:scala-shaded:1.13.1:provided";
+        assertEquals("org.camunda.feel:feel-engine:1.13.1", new Dependency(depText).toGAV());
     }
 }
